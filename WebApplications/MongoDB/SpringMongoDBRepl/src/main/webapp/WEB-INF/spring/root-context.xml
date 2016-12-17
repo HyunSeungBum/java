@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<tx:annotation-driven  />
+	
+	<!-- enable autowire -->
+	<context:annotation-config/>
+	
+	<context:property-placeholder location="classpath:config/mongo.properties" />
+	
+	<mongo:mongo-client id="replicaSetMongo" replica-set="192.168.96.6:27017,192.168.96.30:27017" credentials="test:154321@testDB">
+		<mongo:client-options
+			connections-per-host="${mongo.connectionsPerHost}"
+			threads-allowed-to-block-for-connection-multiplier="${mongo.threadsAllowedToBlockForConnectionMultiplier}"
+			connect-timeout="${mongo.connectTimeout}"
+			max-wait-time="${mongo.maxWaitTime}"
+			socket-keep-alive="${mongo.socketKeepAlive}"
+			socket-timeout="${mongo.socketTimeout}" 
+			read-preference="SECONDARY_PREFERRED" />
+	</mongo:mongo-client>
+	
+	<!-- <bean id="primaryPreferredReadPreference" class="com.mongodb.TaggableReadPreference.PrimaryPreferredReadPreference" /> -->
+	
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg ref="replicaSetMongo" />
+	    <constructor-arg name="databaseName" value="testDB" />
+	</bean>
+	
+	<context:component-scan base-package="com.sbhyun">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+</beans>
