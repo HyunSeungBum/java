@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="sbhyun.person">
+ 
+    <resultMap type="Person" id="PersonResult">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+ 
+    <select id="getPersons" resultMap="PersonResult">
+        SELECT
+        *
+        FROM
+        person
+    </select>
+ 
+    <select id="getPerson" parameterType="Integer" resultMap="PersonResult">
+        SELECT
+        *
+        FROM
+        person
+        WHERE
+        id=#{id}
+    </select>
+ 
+    <insert id="savePerson" parameterType="Person"> <!-- useGeneratedKeys="true" keyProperty="id"> -->
+        INSERT INTO
+        person(id, name)
+        VALUES
+        (#{id}, #{name})
+    </insert>
+    
+    <update id="updatePerson" parameterType="Person"> 
+        UPDATE 
+        person 
+        SET
+        name=#{name}
+        WHERE
+        id=#{id} 
+    </update>
+ 
+    <delete id="deletePerson" parameterType="Integer">
+        DELETE FROM
+        person
+        WHERE
+        id=#{id}
+    </delete>
+</mapper>
