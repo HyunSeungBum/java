@@ -14,12 +14,8 @@ let JBOSS_WEB_PORT=8080+${JBOSS_PORT_OFFSET}
 ########## JBoss System module and User module directory ##########
 export JBOSS_MODULEPATH=$JBOSS_HOME/modules:$JBOSS_HOME/modules/ext
 
-# JVM Options : Server
-export JAVA_OPTS="-server $JAVA_OPTS"
-
 # Linux Large Page Setting
 #export JAVA_OPTS=" $JAVA_OPTS -XX:+UseLargePages "
-export JAVA_OPTS=" $JAVA_OPTS -verbose:gc"
 export JAVA_OPTS=" $JAVA_OPTS -Djava.net.preferIPv4Stack=true"
 export JAVA_OPTS=" $JAVA_OPTS -Dorg.jboss.resolver.warning=true"
 export JAVA_OPTS=" $JAVA_OPTS -Dsun.rmi.dgc.client.gcInterval=3600000 "

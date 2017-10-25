@@ -2,13 +2,13 @@
  
 BASE_DIR=$(dirname $0)
 
+. ${BASE_DIR}/jboss-env.sh
+
 # jvm setting
 export JBOSS_JVM=$BASE_DIR/jvm-env.conf
 [ -r "$JBOSS_JVM" ] && . "${JBOSS_JVM}"
 
-. ${BASE_DIR}/jboss-env.sh
-
-export JAVA_OPTS=" $JAVA_OPTS $JVM_OPTS"
+export JAVA_OPTS=" $JVM_OPTS $JAVA_OPTS "
  
 if [ "x$1" == "xstart" ]; then
   if [ -e $JBOSS_CONSOLE_LOG ]; then
