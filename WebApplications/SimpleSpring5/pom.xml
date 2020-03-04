@@ -21,7 +21,7 @@
 		<!-- Spring -->
 		<spring-framework.version>5.0.1.RELEASE</spring-framework.version>
 		<org.aspectj-version>1.8.10</org.aspectj-version>
-		<com.jackson-version>2.9.10.1</com.jackson-version>
+		<com.jackson-version>2.9.10.3</com.jackson-version>
 
 		<!-- Logging -->
 		<logback.version>1.2.3</logback.version>
