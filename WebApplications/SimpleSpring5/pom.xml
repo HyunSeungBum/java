@@ -186,6 +186,7 @@
 
 	</dependencies>	
 	<build>
+		<finalName>webapps2</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<resources>
 			<resource>
@@ -194,13 +195,13 @@
 					<include>**/*.xml</include>
 				</includes>
 			</resource>
-			<!-- <resource>
+			<resource>
 				<directory>src/main/resources</directory>
-				<excludes>
+				<!-- <excludes>
 					<exclude>config/*.properties</exclude>
 					<exclude>config/*.xml</exclude> 
-				</excludes>
-			</resource>-->
+				</excludes> -->
+			</resource>
 		</resources>
         <plugins>
             <plugin>
