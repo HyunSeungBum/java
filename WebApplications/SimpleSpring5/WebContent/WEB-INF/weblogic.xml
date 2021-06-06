@@ -5,10 +5,21 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 http://java.sun.com/xml/ns/javaee/web-app_3.0.xsd 
 http://xmlns.oracle.com/weblogic/weblogic-web-app 
-http://xmlns.oracle.com/weblogic/weblogic-web-app/1.8/weblogic-web-app.xsd">    
+http://xmlns.oracle.com/weblogic/weblogic-web-app/1.8/weblogic-web-app.xsd">
 
 	<container-descriptor>
 		<show-archived-real-path-enabled>true</show-archived-real-path-enabled>
 	</container-descriptor>
-	
+
+	<application-param>
+		<param-name>webapp.encoding.default</param-name>
+		<param-value>UTF-8</param-value>
+	</application-param>
+
+	<session-descriptor>
+		<sharing-enabled>true</sharing-enabled> <!-- session sharing between context. require ear format -->
+		<persistent-store-type>replicated_if_clustered</persistent-store-type>
+		<cookie-path>/</cookie-path>
+	</session-descriptor>
+
 </weblogic-web-app> 
