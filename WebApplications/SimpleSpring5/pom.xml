@@ -19,7 +19,7 @@
 		
 
 		<!-- Spring -->
-		<spring-framework.version>5.0.1.RELEASE</spring-framework.version>
+		<spring-framework.version>5.2.20.RELEASE</spring-framework.version>
 		<org.aspectj-version>1.8.10</org.aspectj-version>
 		<com.jackson-version>2.10.0.pr1</com.jackson-version>
 
